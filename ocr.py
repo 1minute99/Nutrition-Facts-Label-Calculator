@@ -32,15 +32,15 @@ class ocr:
         # Define regex patterns for each nutritional value
         patterns = {
             'Calories': r'Calories\s*(\d+)',
-            'Total Fat': r'Total Fat\s*([\d.]+)\s*g',
-            'Saturated Fat': r'Saturated Fat\s*([\d.]+)\s*g',
-            'Trans Fat': r'Trans Fat\s*([\d.]+)\s*g',
-            'Cholesterol': r'Cholesterol\s*([\d.]+)\s*mg',
-            'Sodium': r'Sodium\s*([\d.]+)\s*mg',
-            'Total Carbohydrate': r'Total Carbohydrate\s*([\d.]+)\s*g',
-            'Dietary Fiber': r'Dietary Fiber\s*([\d.]+)\s*g',
-            'Total Sugars': r'Total Sugars\s*([\d.]+)\s*g',
-            'Protein': r'Protein\s*([\d.]+)\s*g',
+            'Total Fat': r'Total Fat\s*([\d.]+)',
+            'Saturated Fat': r'Saturated Fat\s*([\d.]+)',
+            'Trans Fat': r'Trans Fat\s*([\d.]+)',
+            'Cholesterol': r'Cholesterol\s*([\d.]+)',
+            'Sodium': r'Sodium\s*([\d.]+)',
+            'Total Carbohydrate': r'Total Carbohydrate\s*([\d.]+)',
+            'Dietary Fiber': r'Dietary Fiber\s*([\d.]+)',
+            'Total Sugars': r'Total Sugars\s*([\d.]+)',
+            'Protein': r'Protein\s*([\d.]+)',
         }
 
         # Extract values based on the defined patterns
@@ -64,6 +64,6 @@ class ocr:
             for keyword in self.keywords:
                 # Check similarity between the extracted value and the keyword
                 similarity = SequenceMatcher(None, value.lower(), keyword.lower()).ratio()
-                if similarity > 0.5:  # Threshold for similarity; adjust as needed
+                if similarity > 0.2:  # Threshold for similarity; adjust as needed
                     return keyword
         return value
